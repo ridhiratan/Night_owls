@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2021 at 10:01 PM
+-- Generation Time: Mar 01, 2021 at 12:24 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -66,6 +66,18 @@ CREATE TABLE `shopkeepers` (
   `location` varchar(500) NOT NULL,
   `fulladdress` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shopkeepers`
+--
+
+INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `fulladdress`) VALUES
+(1, 'Kansal Departmental Store', 'kansalstore', 'shop', 'Delhi', 'Greater Kailash 1, LBB,Delhi'),
+(2, 'Delhi Bazaar Craft House', 'bazaarcraft', 'shop', 'Delhi', ' International Departure Terminal 3 (T3), Indira Gandhi International Airport, New Delhi, Delhi 110037'),
+(3, 'Desi Aata Chakki', 'desiaata', 'shop', 'Sector 22', 'SCO 24, Sector 22C, Chandigarh'),
+(4, 'Sapahiya Karyana Store', 'sapahiya', 'shop', 'Sehl', ' Sehl, Road, Sehal, Himachal Pradesh '),
+(5, 'The Mega Star - Karyana or Grocery Store', 'megastar', 'shop', 'Ram Nagar', '139/12, Ram Nagar, Mangvayin, Mandi, Himachal Pradesh'),
+(6, 'Patanjali Store', 'patanjali', 'shop', 'Bharat', 'Desh ki apni dukaan');
 
 --
 -- Indexes for dumped tables

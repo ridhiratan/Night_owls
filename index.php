@@ -1,3 +1,13 @@
+<?php
+session_start();
+require('connection.php');
+require('functions.php');
+if(isset($_REQUEST['userlocation']) && $_REQUEST['userlocation']!=''){
+
+}else{
+    $all_shops_query="select * from shopkeepers";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +45,7 @@
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li> -->
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Where's your shop?</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup.html">New account?</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="server.php">New account?</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.html">Login</a></li>
             </ul>
         </div>
@@ -71,38 +81,24 @@
         <section class="resume-section mx-auto" id="experience ">
             <div class="resume-section-content ">
                 <h2 class="mb-5 text-center">Shops around You</h2>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
+                <?php
+                    $all_shops=mysqli_query($con,$all_shops_query) or die(mysqli_error($son));
+                    $total_no=mysqli_num_rows($all_shops);
+                    $counter=1;
+                    while($row=mysqli_fetch_array($all_shops)){
+                        ?>
+                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
                     <div class="flex-grow-1 ">
-                        <h3 class="mb-0 "><a href="shop1.html ">Shop-1</a></h3>
-                        <div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i> ~~Address of this shop~~</div>
+                        <h3 class="mb-0 "><a href="shop1.html ">Shop-<?php echo $counter ?></a></h3>
+                
+                        <div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
                     </div>
-                    <div class="flex-shrink-0 "><span class="text-primary ">Locality</span></div>
+                   
+                    <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>
                 </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
-                    <div class="flex-grow-1 ">
-                        <h3 class="mb-0 "><a href="shop2.html ">Shop-2</a></h3>
-                        <div class="subheading mb-3 ">~~Address of this shop~~</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde</p>
-                    </div>
-                    <div class="flex-shrink-0 "><span class="text-primary ">Locality</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
-                    <div class="flex-grow-1 ">
-                        <h3 class="mb-0 "><a href="shop3.html ">Shop-3</a></h3>
-                        <div class="subheading mb-3 ">~~Address of this shop~~</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde</p>
-                    </div>
-                    <div class="flex-shrink-0 "><span class="text-primary ">July 2010 - December 2011</span></div>
-                </div>
-                <div class="d-flex flex-column flex-md-row justify-content-between ">
-                    <div class="flex-grow-1 ">
-                        <h3 class="mb-0 "><a href="shop4.html ">Shop-4</a></h3>
-                        <div class="subheading mb-3 ">~~Address of this shop~~</div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde</p>
-                    </div>
-                    <div class="flex-shrink-0 "><span class="text-primary ">September 2008 - June 2010</span></div>
-                </div>
+                <?php $counter=$counter+1;}?>
+              
             </div>
         </section>
         <hr class="m-0 " />

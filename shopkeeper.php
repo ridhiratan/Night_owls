@@ -1,3 +1,13 @@
+<?php
+require('connection.php');
+require('functions.php');
+if(isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!=''){
+
+}else{
+    header('location:index.php');
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

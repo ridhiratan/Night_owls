@@ -1,3 +1,13 @@
+<<?php
+require('connection.php');
+require('functions.php');
+if(isset($_SESSION['ADMIN_LOGIN']) && $_SESSION['ADMIN_LOGIN']!=''){
+
+}else{
+    header('location:index.php');
+    die();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
