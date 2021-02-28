@@ -1,3 +1,24 @@
+<?php
+require('connection.php');
+$msg = '';
+if(isset($_POST['submit'])){
+    $username=mysqli_real_escape_string($con,$_POST['username']);
+    $password=mysqli_real_escape_string($con,$_POST['password']);
+    $admin_sql="select * from admin_users where username='$username' and password='$password'";
+    $shop_sql="select * from shopkeepers where username='$username' and password='$password'";
+    if(mysqli_num_rows(mysqli_query($con,$admin_sql))>0){
+        $_SESSION['ADMIN_LOGIN']='yes';
+        $_SESSION['ADMIN_USERNAME']=$username;
+        header('location:admin.php');
+    }elseif(mysqli_num_rows(mysqli_query($con,$shop_sql))>0){
+        $_SESSION['SHOP_LOGIN']='yes';
+        $_SESSION['SHOP_USERNAME']=$username;
+        header('location:shopkeeper.php');
+    }else{
+        $msg = "Please enter correct login details";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,7 +26,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Hack30Covid</title>
+        <title>Resume - Start Bootstrap Theme</title>
         <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
@@ -26,58 +47,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Shops around You</a></li> -->
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Shops around You</a></li>
                     <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li> -->
-                    <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Where's your shop?</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li> -->
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="signup.html">New account?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Where's your shop?</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.html">Login page</a></li>
                 </ul>
             </div>
         </nav>
-        <!-- Page Content-->
-        <div class="container-fluid p-0">
-            <!-- About-->
-            <section class="resume-section" id="about">
-                <div class="resume-section-content">
-                    <h1 class="mb-0">
-                        COVID
-                        <span class="text-primary">Relief</span>
-                    </h1>
-                    <div class="subheading mb-5">
-                        Providing a helping hand to the hands that are hidden under your eyes!!
-                        <br>
-                        <a href="mailto:b19192@students.iitmandi.ac.in">Mail us here!!!</a>
-                    </div>
-                    <p class="lead mb-5">On an average, a person spends around an hour searching for desired products in markets. In trying times of Covid19, we do not want to spend unnecessary time wandering in markets as it exposes us to the risk of catching the virus. On the other hand there are families starving from hunger, money, work and maybe some affection too!<br> <br> So, what could have been done?</p>
-                    <div class="social-icons">
-                        <!-- <a class="social-icon" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-icon" href="#"><i class="fab fa-github"></i></a>
-                        <a class="social-icon" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="social-icon" href="#"><i class="fab fa-facebook-f"></i></a> -->
-                    </div>
-                </div>
-            </section>
-            <hr class="m-0" />
            
 
 
             <section class="resume-section" id="interests">
                 <div class="resume-section-content">
                     <h2 class="mb-5">LOGIN HERE</h2>
-                    <form>
+                    <form method="post">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          <label for="username">Username</label>
+                          <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
                       </form>
+                      <?php echo $msg ?>
                 </div>
             </section>
             <hr class="m-0" />
