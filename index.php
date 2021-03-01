@@ -6,7 +6,7 @@ if (isset($_REQUEST['userlocation']) && $_REQUEST['userlocation'] != '') {
 } else {
     $all_shops_query = "select * from shopkeepers";
 }
-if (isset($_REQUEST['thisshop'])) {
+if(isset($_REQUEST['thisshop'])){
     $_SESSION['shopid'] = $_REQUEST['thisshop'];
     header('location:shop.php');
     die();
@@ -91,12 +91,9 @@ if (isset($_REQUEST['thisshop'])) {
                 ?>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
                         <div class="flex-grow-1 ">
-                            <form method="post">
-                                <button type="submit" name="thisshop" class="btn btn-link" value="<?php echo $row['s_id'] ?>">
-                                    <h3 style="color: #bd5d38;"><?php echo $row['name'] ?></h3>
-                                </button>
-                            </form>
-                            <div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
+                        <form method="post">
+                                <button type="submit" name="thisshop" class="btn btn-link" value="<?php echo $row['s_id'] ?>"><h3 style="color: #bd5d38;"><?php echo $row['name'] ?></h3></button>
+                            </form><div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
                         </div>
                         <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>

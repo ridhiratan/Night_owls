@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2021 at 09:23 AM
+-- Generation Time: Mar 01, 2021 at 10:56 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -33,6 +33,13 @@ CREATE TABLE `admin_users` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `admin_users`
+--
+
+INSERT INTO `admin_users` (`id`, `username`, `password`) VALUES
+(1, 'admin', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +51,15 @@ CREATE TABLE `products` (
   `name` varchar(255) NOT NULL,
   `symbol` varchar(255) DEFAULT ''''''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`p_id`, `name`, `symbol`) VALUES
+(1, 'bread', '\'\''),
+(2, 'butter', '\'\''),
+(3, 'milk', '\'\'');
 
 -- --------------------------------------------------------
 
@@ -60,6 +76,17 @@ CREATE TABLE `shopkeepers` (
   `fulladdress` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `shopkeepers`
+--
+
+INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `fulladdress`) VALUES
+(1, 'Kansal Dept Store', 'kansal', 'shop', 'Sector 22', 'SCO 23, Sector 22, Chandigarh'),
+(2, 'Delhi Bazaar Craft House', 'bazaarcraft', 'shop', 'Delhi', 'International Departure Terminal 3 (T3), Indira Gandhi International Airport, New Delhi, Delhi '),
+(3, 'Kala Shree Regalia', 'kala', 'shop', 'Delhi', '1914-15, OPPOSITE SHEESH GANJ GURUDWARA, CHANDNI CHOWK, Delhi,'),
+(4, 'City Medical Store', 'citymed', 'shop', 'Sector 13', 'DNE, Chandigarh'),
+(5, '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -71,6 +98,14 @@ CREATE TABLE `shop_product` (
   `pr_id` int(11) NOT NULL,
   `sh_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `shop_product`
+--
+
+INSERT INTO `shop_product` (`id`, `pr_id`, `sh_id`) VALUES
+(1, 1, 1),
+(2, 3, 1);
 
 --
 -- Indexes for dumped tables
@@ -108,25 +143,25 @@ ALTER TABLE `shop_product`
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shopkeepers`
 --
 ALTER TABLE `shopkeepers`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `shop_product`
 --
 ALTER TABLE `shop_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
