@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2021 at 12:24 AM
+-- Generation Time: Mar 01, 2021 at 07:37 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -77,7 +77,8 @@ INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `
 (3, 'Desi Aata Chakki', 'desiaata', 'shop', 'Sector 22', 'SCO 24, Sector 22C, Chandigarh'),
 (4, 'Sapahiya Karyana Store', 'sapahiya', 'shop', 'Sehl', ' Sehl, Road, Sehal, Himachal Pradesh '),
 (5, 'The Mega Star - Karyana or Grocery Store', 'megastar', 'shop', 'Ram Nagar', '139/12, Ram Nagar, Mangvayin, Mandi, Himachal Pradesh'),
-(6, 'Patanjali Store', 'patanjali', 'shop', 'Bharat', 'Desh ki apni dukaan');
+(6, 'Patanjali Store', 'patanjali', 'shop', 'Bharat', 'Desh ki apni dukaan'),
+(7, '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -100,6 +101,22 @@ ALTER TABLE `products`
 --
 ALTER TABLE `shopkeepers`
   ADD PRIMARY KEY (`s_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `products`
+--
+ALTER TABLE `products`
+  MODIFY `p_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shopkeepers`
+--
+ALTER TABLE `shopkeepers`
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

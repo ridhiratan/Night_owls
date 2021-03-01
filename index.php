@@ -46,7 +46,7 @@ if(isset($_REQUEST['userlocation']) && $_REQUEST['userlocation']!=''){
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Where's your shop?</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="server.php">New account?</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.html">Login</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Login</a></li>
             </ul>
         </div>
     </nav>
