@@ -53,12 +53,13 @@ if(isset($_REQUEST['thisshop'])){
             <div class="resume-section-content p-3">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1" class="text-dark pt-3" style="font-size: 1.5em;">Enter your
+                        <label for="" class="text-dark pt-3" style="font-size: 1.5em;">Enter your
                             location to know shops near you!</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="userlocation" aria-describedby=" emailHelp " placeholder="aapka address " required>
+                        <input type="email" class="form-control" id="" name="userlocation" aria-describedby=" emailHelp " placeholder="aapka address " required>
                     </div>
-
+                    <div class="text-center">
                     <button type="submit " class="btn btn-primary ">Find Shops</button>
+                    </div>
                 </form>
             </div>
         </section>
@@ -77,9 +78,10 @@ if(isset($_REQUEST['thisshop'])){
                         <form method="post">
                                 <button type="submit" name="thisshop" class="btn btn-link" value="<?php echo $row['s_id'] ?>"><h3 style="color: #bd5d38;"><?php echo $row['name'] ?></h3></button>
                             </form><div class="subheading mb-3 "><i class="fa fa-map-marker mx-2" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
+                            <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
                         </div>
                         <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>
+                        <hr class="m-0" />
                     </div>
                 <?php $counter = $counter + 1;
                 } ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2021 at 12:16 PM
+-- Generation Time: Mar 01, 2021 at 07:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -73,19 +73,20 @@ CREATE TABLE `shopkeepers` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `location` varchar(500) NOT NULL,
-  `fulladdress` varchar(500) NOT NULL
+  `fulladdress` varchar(500) NOT NULL,
+  `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `shopkeepers`
 --
 
-INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `fulladdress`) VALUES
-(1, 'Kansal Dept Store', 'kansal', 'shop', 'Sector 22', 'SCO 23, Sector 22, Chandigarh'),
-(2, 'Delhi Bazaar Craft House', 'bazaarcraft', 'shop', 'Delhi', 'International Departure Terminal 3 (T3), Indira Gandhi International Airport, New Delhi, Delhi '),
-(3, 'Kala Shree Regalia', 'kala', 'shop', 'Delhi', '1914-15, OPPOSITE SHEESH GANJ GURUDWARA, CHANDNI CHOWK, Delhi,'),
-(4, 'City Medical Store', 'citymed', 'shop', 'Sector 13', 'DNE, Chandigarh'),
-(5, '', '', '', '', '');
+INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `fulladdress`, `phone`) VALUES
+(1, 'Kansal Dept Store', 'kansal', 'shop', 'Sector 22', 'SCO 23, Sector 22, Chandigarh', '9876543210'),
+(2, 'Delhi Bazaar Craft House', 'bazaarcraft', 'shop', 'Delhi', 'International Departure Terminal 3 (T3), Indira Gandhi International Airport, New Delhi, Delhi ', '9876543210'),
+(3, 'Kala Shree Regalia', 'kala', 'shop', 'Delhi', '1914-15, OPPOSITE SHEESH GANJ GURUDWARA, CHANDNI CHOWK, Delhi,', '9876543210'),
+(4, 'City Medical Store', 'citymed', 'shop', 'Sector 13', 'DNE, Chandigarh', '9876543210'),
+(6, 'Saluja Electronics', 'saluja', 'shop', 'Delhi', 'Street 20, xyz nagar, Delhi', '9876543210');
 
 -- --------------------------------------------------------
 
@@ -155,7 +156,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shopkeepers`
 --
 ALTER TABLE `shopkeepers`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `shop_product`

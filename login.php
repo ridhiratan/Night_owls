@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     } elseif (mysqli_num_rows(mysqli_query($con, $shop_sql)) > 0) {
         $_SESSION['SHOP_LOGIN'] = 'yes';
         $_SESSION['SHOP_USERNAME'] = $username;
-        header('location:index.php');
+        header('location:shop.php');
     } else {
         $msg = "Please enter correct login details";
     }
@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
                 </div>
             </form>
             <?php echo $msg ?>
-            <div class="text-center text-info pt-2"><a href="signup.php">Create New Account</a></div>
+            <div class="text-center text-info pt-2"><a href="sign_up.php">Create New Account</a></div>
         </div>
     </section>
     <hr class="m-0" />
