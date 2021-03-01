@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
     } elseif (mysqli_num_rows(mysqli_query($con, $shop_sql)) > 0) {
         $_SESSION['SHOP_LOGIN'] = 'yes';
         $_SESSION['SHOP_USERNAME'] = $username;
-        header('location:shopkeeper.php');
+        header('location:index.php');
     } else {
         $msg = "Please enter correct login details";
     }

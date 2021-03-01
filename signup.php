@@ -4,6 +4,7 @@
     $shopname = $_POST['shopname'];
     $location = $_POST['location'];
     $address = $_POST['fulladdress'];
+    $password = $_POST['password'];
     $msg = '';
     // if(isset($_SESSION['ADMIN_LOGIN'])){
     //     header('location:admin.php');
@@ -64,11 +65,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Enter location</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="location" placeholder="Enter location of your shop" required>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="location" placeholder="Enter location of your shop" required>
                         </div>
                         <div class="form-group">
                             <label for="fulladdress">Enter Full Address</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="fulladdress" placeholder="Enter full address of your shop" required>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="fulladdress" placeholder="Enter full address of your shop" required>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Password</label>

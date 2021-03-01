@@ -32,26 +32,9 @@ if(isset($_REQUEST['thisshop'])){
 </head>
 
 <body id="page-top">
-    <!-- Navigation-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">
-            <span class="d-block d-lg-none">SHOPLOCAL</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/shoplocal.jpeg" alt="" /></span>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Shops around You</a></li>
-                <!-- <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li> -->
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Where's your shop?</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="server.php">New account?</a></li>
-                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="login.php">Login</a></li>
-            </ul>
-        </div>
-    </nav>
+<?php
+    require('navbar.php');
+    ?>
     <!-- Page Content-->
 
     <hr class="m-0" />
@@ -93,7 +76,7 @@ if(isset($_REQUEST['thisshop'])){
                         <div class="flex-grow-1 ">
                         <form method="post">
                                 <button type="submit" name="thisshop" class="btn btn-link" value="<?php echo $row['s_id'] ?>"><h3 style="color: #bd5d38;"><?php echo $row['name'] ?></h3></button>
-                            </form><div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
+                            </form><div class="subheading mb-3 "><i class="fa fa-map-marker mx-2" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
                         </div>
                         <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>

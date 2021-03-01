@@ -1,9 +1,7 @@
 <?php
 require('connection.php');
 require('functions.php');
-if(isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!=''){
-
-}elseif(isset($_SESSION['shopid'])){
+if((isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!='') || isset($_SESSION['shopid'])){
     $shopid = $_SESSION['shopid'];
     $shopinfo_query = "select * from `shopkeepers` where s_id='$shopid'";
     $res = mysqli_query($con, $shopinfo_query);
@@ -52,7 +50,10 @@ if(isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!=''){
                     echo $shop['name'];
                  ?></h2>
                         <span> <?php 
-                    echo $shop['fulladdress'];
+                    echo $shop['fulladdress']; ?>
+                    <br><i class="fa fa-phone mx-2" aria-hidden="true"></i>
+                    <?php
+                    echo $shop['phone'];
                 } ?></span>
                     </div>
                 </div>
@@ -61,9 +62,7 @@ if(isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!=''){
 
         <!-- <div>yha kuch aaega</div> -->
 
-        <section class="resume-section mx-auto" id="interests">
-            <div class="resume-section-content">
-                <h2 class="mb-5 text-center">Items Available</h2>
+                <h2 class="mb-5 text-center pt-3">Items Available</h2>
                 <div class="container">
                     <div class="row mx-auto pl-5">
                             <?php
@@ -88,8 +87,7 @@ if(isset($_SESSION['SHOP_LOGIN']) && $_SESSION['SHOP_USERNAME']!=''){
 
                         </div>
                 </div>
-            </div>
-        </section>
+
 
     </div>
 
