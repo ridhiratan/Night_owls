@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 01, 2021 at 07:37 AM
+-- Generation Time: Mar 01, 2021 at 09:23 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.2
 
@@ -33,13 +33,6 @@ CREATE TABLE `admin_users` (
   `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `admin_users`
---
-
-INSERT INTO `admin_users` (`id`, `username`, `password`) VALUES
-(1, 'admin', 'admin');
-
 -- --------------------------------------------------------
 
 --
@@ -67,18 +60,17 @@ CREATE TABLE `shopkeepers` (
   `fulladdress` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `shopkeepers`
+-- Table structure for table `shop_product`
 --
 
-INSERT INTO `shopkeepers` (`s_id`, `name`, `username`, `password`, `location`, `fulladdress`) VALUES
-(1, 'Kansal Departmental Store', 'kansalstore', 'shop', 'Delhi', 'Greater Kailash 1, LBB,Delhi'),
-(2, 'Delhi Bazaar Craft House', 'bazaarcraft', 'shop', 'Delhi', ' International Departure Terminal 3 (T3), Indira Gandhi International Airport, New Delhi, Delhi 110037'),
-(3, 'Desi Aata Chakki', 'desiaata', 'shop', 'Sector 22', 'SCO 24, Sector 22C, Chandigarh'),
-(4, 'Sapahiya Karyana Store', 'sapahiya', 'shop', 'Sehl', ' Sehl, Road, Sehal, Himachal Pradesh '),
-(5, 'The Mega Star - Karyana or Grocery Store', 'megastar', 'shop', 'Ram Nagar', '139/12, Ram Nagar, Mangvayin, Mandi, Himachal Pradesh'),
-(6, 'Patanjali Store', 'patanjali', 'shop', 'Bharat', 'Desh ki apni dukaan'),
-(7, '', '', '', '', '');
+CREATE TABLE `shop_product` (
+  `id` int(11) NOT NULL,
+  `pr_id` int(11) NOT NULL,
+  `sh_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Indexes for dumped tables
@@ -103,8 +95,20 @@ ALTER TABLE `shopkeepers`
   ADD PRIMARY KEY (`s_id`);
 
 --
+-- Indexes for table `shop_product`
+--
+ALTER TABLE `shop_product`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `admin_users`
+--
+ALTER TABLE `admin_users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -116,7 +120,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `shopkeepers`
 --
 ALTER TABLE `shopkeepers`
-  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `s_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `shop_product`
+--
+ALTER TABLE `shop_product`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
