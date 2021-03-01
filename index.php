@@ -2,10 +2,14 @@
 session_start();
 require('connection.php');
 require('functions.php');
-if(isset($_REQUEST['userlocation']) && $_REQUEST['userlocation']!=''){
-
-}else{
-    $all_shops_query="select * from shopkeepers";
+if (isset($_REQUEST['userlocation']) && $_REQUEST['userlocation'] != '') {
+} else {
+    $all_shops_query = "select * from shopkeepers";
+}
+if(isset($_REQUEST['thisshop'])){
+    $_SESSION['shopid'] = $_REQUEST['thisshop'];
+    header('location:shop.php');
+    die();
 }
 ?>
 <!DOCTYPE html>
@@ -32,11 +36,9 @@ if(isset($_REQUEST['userlocation']) && $_REQUEST['userlocation']!=''){
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
             <span class="d-block d-lg-none">SHOPLOCAL</span>
-            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2"
-                    src="assets/img/shoplocal.jpeg" alt="" /></span>
+            <span class="d-none d-lg-block"><img class="img-fluid img-profile rounded-circle mx-auto mb-2" src="assets/img/shoplocal.jpeg" alt="" /></span>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
-                class="navbar-toggler-icon"></span></button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
@@ -82,23 +84,22 @@ if(isset($_REQUEST['userlocation']) && $_REQUEST['userlocation']!=''){
             <div class="resume-section-content ">
                 <h2 class="mb-5 text-center">Shops around You</h2>
                 <?php
-                    $all_shops=mysqli_query($con,$all_shops_query) or die(mysqli_error($son));
-                    $total_no=mysqli_num_rows($all_shops);
-                    $counter=1;
-                    while($row=mysqli_fetch_array($all_shops)){
-                        ?>
-                        <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
-                    <div class="flex-grow-1 ">
-                        <h3 class="mb-0 "><a href="shop1.html ">Shop-<?php echo $counter ?></a></h3>
-                
-                        <div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
+                $all_shops = mysqli_query($con, $all_shops_query) or die(mysqli_error($son));
+                $total_no = mysqli_num_rows($all_shops);
+                $counter = 1;
+                while ($row = mysqli_fetch_array($all_shops)) {
+                ?>
+                    <div class="d-flex flex-column flex-md-row justify-content-between mb-5 ">
+                        <div class="flex-grow-1 ">
+                            <button type="submit" name="thisshop" class="btn btn-link" value="<?php echo $row['s_id'] ?>"><h3 style="color: #bd5d38;"><?php echo $row['name'] ?></h3></button>
+                            <div class="subheading mb-3 "><i class="fa fa-map-marker" aria-hidden="true"></i><?php echo $row['fulladdress'] ?></div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum fugiat neque consequuntur, ullam deleniti doloribus voluptates minus nihil sequi velit ut quia, quam eius sed quaerat ad, iusto delectus unde.</p>
+                        </div>
+                        <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>
                     </div>
-                   
-                    <div class="flex-shrink-0 "><span class="text-primary "><?php echo $row['location'] ?></span></div>
-                </div>
-                <?php $counter=$counter+1;}?>
-              
+                <?php $counter = $counter + 1;
+                } ?>
+
             </div>
         </section>
         <hr class="m-0 " />
