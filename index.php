@@ -84,7 +84,7 @@ if(isset($_REQUEST['thisshop'])){
             <div class="resume-section-content ">
                 <h2 class="mb-5 text-center">Shops around You</h2>
                 <?php
-                $all_shops = mysqli_query($con, $all_shops_query) or die(mysqli_error($son));
+                $all_shops = mysqli_query($con, $all_shops_query) or die(mysqli_error($con));
                 $total_no = mysqli_num_rows($all_shops);
                 $counter = 1;
                 while ($row = mysqli_fetch_array($all_shops)) {
